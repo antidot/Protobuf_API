@@ -4,7 +4,7 @@
   <artifactId>public-protobuf</artifactId>
   <packaging>jar</packaging>
   <name>Public Java Protobufs</name>
-  <version>1.4-SNAPSHOT</version>
+  <version>1.0-SNAPSHOT</version>
 
   <parent>
     <groupId>org.sonatype.oss</groupId>
@@ -130,7 +130,7 @@
             <arguments>
                 <argument>-e</argument>
                 <argument>-c</argument>
-                <argument>for f in $(find . -name '*.proto'); do set +e; grep java_antidot_api $f &amp;> /dev/null; set -e; if [ $? -eq 0 ]; then echo Working on $$f; protoc -I. --java_out=${project.build.directory}/generated-sources $$f; fi; done</argument>
+                <argument>for f in $(find . -name '*.proto'); do set +e; grep java_antidot_api $f &amp;> /dev/null; result=$?; set -e; if [ $result -eq 0 ]; then echo Working on $$f; protoc -I. --java_out=${project.build.directory}/generated-sources $$f; fi; done</argument>
             </arguments>
             </configuration>
           </execution>
